@@ -1,0 +1,25 @@
+[package]
+name = "stampfly-rust"
+version = "0.1.0"
+edition = "2024"
+resolver = "2"
+rust-version = "1.85"
+description = "Rust flight-control firmware for the M5Stack Stamp Fly"
+repository = "https://github.com/staszewski/stampfly-rust"
+readme = "README.md"
+
+[dependencies]
+anyhow = "1"
+embedded-hal = "1.0.0"
+esp-idf-hal = "0.46.2"
+esp-idf-svc = "0.52.1"
+flight-core = { path = "crates/flight-core" }
+log = "0.4"
+ina3221 = "0.4.5"
+
+[build-dependencies]
+cc = "1"
+embuild = "0.33"
+
+[package.metadata.esp-idf-sys]
+esp_idf_version = "tag:v5.4.3"

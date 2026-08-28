@@ -1,0 +1,10 @@
+[package]
+name = "flight-core"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Hardware-independent estimation and control core for Rust-Fly"
+repository = "https://github.com/staszewski/stampfly-rust"
+readme = "../../README.md"
+
+[dependencies]
