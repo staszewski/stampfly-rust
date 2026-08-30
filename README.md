@@ -48,7 +48,9 @@ Build optimized firmware and flash it with the serial monitor:
 
 ```sh
 cargo build --release
-espflash flash --monitor target/xtensa-esp32s3-espidf/release/stampfly-rust
+espflash flash --monitor \
+  --partition-table partitions.csv \
+  target/xtensa-esp32s3-espidf/release/stampfly-rust
 ```
 
 ## Main components

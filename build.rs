@@ -15,17 +15,35 @@ fn main() {
     vl53l3c.flag_if_supported("-Wno-missing-field-initializers");
     vl53l3c.flag_if_supported("-Wno-sign-compare");
 
-    for entry in std::fs::read_dir("vendor/vl53l3c").expect("read vendor/vl53l3c") {
-        let path = entry.expect("read vendor/vl53l3c entry").path();
-        if path.extension().and_then(|ext| ext.to_str()) != Some("c") {
-            continue;
-        }
+    const VL53L3C_SOURCES: &[&str] = &[
+        "rust_fly_tof_bridge.c",
+        "rust_fly_vl53lx_platform.c",
+        "vl53lx_api.c",
+        "vl53lx_api_calibration.c",
+        "vl53lx_api_core.c",
+        "vl53lx_api_debug.c",
+        "vl53lx_api_preset_modes.c",
+        "vl53lx_core.c",
+        "vl53lx_core_support.c",
+        "vl53lx_dmax.c",
+        "vl53lx_hist_algos_gen3.c",
+        "vl53lx_hist_algos_gen4.c",
+        "vl53lx_hist_char.c",
+        "vl53lx_hist_core.c",
+        "vl53lx_hist_funcs.c",
+        "vl53lx_nvm.c",
+        "vl53lx_nvm_debug.c",
+        "vl53lx_platform_init.c",
+        "vl53lx_platform_ipp.c",
+        "vl53lx_register_funcs.c",
+        "vl53lx_sigma_estimate.c",
+        "vl53lx_silicon_core.c",
+        "vl53lx_wait.c",
+        "vl53lx_xtalk.c",
+    ];
 
-        if path.file_name().and_then(|name| name.to_str()) == Some("vl53lx_platform.c") {
-            continue;
-        }
-
-        vl53l3c.file(path);
+    for source in VL53L3C_SOURCES {
+        vl53l3c.file(Path::new("vendor/vl53l3c").join(source));
     }
 
     vl53l3c.compile("vl53l3c");
