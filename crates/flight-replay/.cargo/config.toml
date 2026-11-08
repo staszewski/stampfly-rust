@@ -1,0 +1,4 @@
+# Desktop target for the current development machine (Apple Silicon).
+# On another platform, override with --target <host from rustc -vV>.
+[build]
+target = "aarch64-apple-darwin"
