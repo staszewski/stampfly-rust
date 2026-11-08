@@ -1,0 +1,21 @@
+[package]
+name = "flight-replay"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97.1"
+publish = false
+description = "Offline StampFly attitude replay using sguaba and Bevy"
+
+# Separate desktop dependency graph from the ESP32 firmware.
+[workspace]
+resolver = "3"
+
+[features]
+default = []
+viewer = ["dep:bevy", "dep:bevy_egui"]
+
+[dependencies]
+sguaba = "0.10.7"
+uom = { version = "0.38", features = ["f64"] }
+bevy = { version = "0.20", optional = true }
+bevy_egui = { version = "0.43.1", optional = true }
